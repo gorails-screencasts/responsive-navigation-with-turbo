@@ -1,0 +1,15 @@
+<% items = [
+  ["Home", root_path],
+  ["Calendar", calendar_path],
+  ["Projects", projects_path],
+  ["Tasks", tasks_path],
+  ["Announcements", announcements_path]
+] %>
+
+<%= select_tag nil, options_for_select(items, request.path), class: "sm:hidden", onchange: "Turbo.visit(this.selectedOptions[0].value)" %>
+
+<ul class="hidden sm:block">
+  <% items.each do |text, path| %>
+    <li><%= link_to text, path %></li>
+  <% end %>
+</ul>
